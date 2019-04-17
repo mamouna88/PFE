@@ -5,18 +5,19 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdherentRepository")
  */
-class Adherent
+class Adherent extends User
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=64)
@@ -39,25 +40,9 @@ class Adherent
     private $phone_number;
 
     /**
-     * @ORM\Column(type="string", length=64)
-     */
-    private $mail_address;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $password;
-
-    /**
      * @ORM\Column(type="string", length=20)
      */
     private $job;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Role")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $role;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Paiement", mappedBy="adherent")
@@ -66,6 +51,7 @@ class Adherent
 
     public function __construct()
     {
+        parent::__construct();
         $this->paiements = new ArrayCollection();
     }
 
@@ -122,30 +108,6 @@ class Adherent
         return $this;
     }
 
-    public function getMailAddress(): ?string
-    {
-        return $this->mail_address;
-    }
-
-    public function setMailAddress(string $mail_address): self
-    {
-        $this->mail_address = $mail_address;
-
-        return $this;
-    }
-
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
     public function getJob(): ?string
     {
         return $this->job;
@@ -154,18 +116,6 @@ class Adherent
     public function setJob(string $job): self
     {
         $this->job = $job;
-
-        return $this;
-    }
-
-    public function getRole(): ?Role
-    {
-        return $this->role;
-    }
-
-    public function setRole(?Role $role): self
-    {
-        $this->role = $role;
 
         return $this;
     }

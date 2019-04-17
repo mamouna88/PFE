@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>pay</h1>
+    <div class="container">
+    <form action=paiement.php class="form">
+       <div class="field">
+           <input type="text" name="name" placeholder=nom required>
+       </div>
+        <div class="field">
+            <input type="text" name="first_name" placeholder=prenom required>
+        </div>
+        <div class="field">
+            <input type="email" name="email" placeholder=email required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="code carte bleu">
+        </div><div class="field">
+        <button type="submit" class="btn btn-primary">Payer</button> </div>
+    </form>
+    </div>
+{% endblock %}
+
+{% block title %}
+    <script type="jscript"
+
+{% endblock %}
+
