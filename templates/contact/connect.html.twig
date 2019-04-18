@@ -15,6 +15,7 @@
         {{ form_start(contactForm) }}
             {{ form_widget(contactForm) }}
             <button type="submit" class="btn btn-primary">Se connecter</button>
+        <a href={{ path('pay') }} type="submit" class="btn btn-primary">Cotiser</a>
         <a href={{ path('fos_user_registration_register') }} type="submit" class="btn btn-primary">S'inscrire</a>
         {{ form_end(contactForm) }}
 
